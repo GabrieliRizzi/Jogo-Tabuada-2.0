@@ -3,61 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jogo da Tabuada Divertido</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Tabuada Hero — Jogo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="container">
-    <header>
-      <h1>🐰 Jogo da Tabuada</h1>
-      <p>Resolva as contas para ajudar o bichinho a pular os obstáculos!</p>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">🐣</span>
+        <h1>Tabuada Hero</h1>
+      </div>
+      <div class="hud">
+        <div>Score: <span id="score">0</span></div>
+        <div>Vidas: <span id="lives">3</span></div>
+        <div>Nível: <span id="level">1</span></div>
+      </div>
     </header>
 
-    <section class="form-area">
-      <label>
-        Seu e-mail:
-        <input id="student-email" type="email" placeholder="aluno@escola.com" required>
-      </label>
-      <button id="start-btn">Começar o Jogo</button>
-    </section>
+    <main class="main">
+      <section id="intro" class="card">
+        <h2>Bem-vindo!</h2>
+        <p>Ajude o bichinho a atravessar os obstáculos resolvendo contas. Use ← → para andar e ↑ / W / Espaço para pular.</p>
 
-    <section id="game-area" class="hidden">
-      <div class="hud">
-        <div>Aluno: <span id="hud-student">—</span></div>
-        <div>Nível: <span id="hud-level">1</span></div>
-        <div>Acertos: <span id="hud-correct">0</span>/30</div>
-      </div>
-
-      <canvas id="game-canvas" width="600" height="200"></canvas>
-
-      <div class="question-box">
-        <div id="question">Quanto é 2 × 3?</div>
-        <input id="answer-input" type="number" placeholder="Resposta">
-        <button id="submit-answer">Enviar</button>
-        <div id="feedback" class="feedback"></div>
-      </div>
-    </section>
-
-    <!-- Resumo enviado por e-mail -->
-    <section id="summary-area" class="hidden">
-      <h2>Resumo do Nível</h2>
-      <pre id="summary-text"></pre>
-      <form id="report-form" method="post"
-        action="mailto:gabrieli.rizzi.cruz@escola.pr.gov.br"
-        enctype="text/plain">
-        <label>
+        <label class="field">
           Seu e-mail:
-          <input name="Aluno" id="form-student" type="email" required>
+          <input id="studentEmail" type="email" placeholder="aluno@escola.com">
         </label>
-        <textarea name="Resumo" id="form-summary"></textarea>
-        <button type="submit">Enviar para o professor</button>
-      </form>
-    </section>
 
-    <footer>
-      <small>Todos os relatórios são enviados automaticamente ao professor após cada nível.</small>
+        <div class="controls-row">
+          <label>Nível inicial:
+            <select id="startLevel">
+              <!-- options 1..10 -->
+            </select>
+          </label>
+          <button id="btnStart" class="btn primary">Iniciar Jogo</button>
+        </div>
+
+        <small class="muted">Ao concluir cada nível aparecerá um resumo que você pode enviar ao professor.</small>
+      </section>
+
+      <section id="gameArea" class="card hidden">
+        <canvas id="gameCanvas" width="820" height="260" aria-label="Área do jogo"></canvas>
+
+        <div class="question-panel">
+          <div class="question" id="questionText">Pergunta</div>
+          <div class="answer-row">
+            <input id="answerInput" type="number" placeholder="Resposta" inputmode="numeric" />
+            <button id="btnSubmit" class="btn">Enviar</button>
+            <button id="btnSkip" class="btn ghost">Pular</button>
+          </div>
+          <div id="feedback" class="feedback"></div>
+        </div>
+
+        <div class="small-instr">Contas por nível: <strong id="perLevel">5</strong> · Use teclado para controlar</div>
+      </section>
+
+      <!-- Tela de pausa / vitória do nível / gameover -->
+      <section id="overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2 id="overlayTitle">Título</h2>
+          <p id="overlayText">Texto</p>
+          <div class="overlay-actions">
+            <button id="overlayContinue" class="btn primary">Continuar</button>
+            <button id="overlayRestart" class="btn">Reiniciar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- painel de resumo que será enviado por e-mail -->
+      <section id="summary" class="card hidden">
+        <h2>Resumo do nível</h2>
+        <pre id="summaryText" class="summaryBox">—</pre>
+
+        <form id="emailForm" method="get" action="">
+          <!-- action será preenchido dinamicamente com mailto: -->
+          <label class="field">
+            Confirmar seu e-mail:
+            <input id="formStudentEmail" name="Aluno" type="email" required>
+          </label>
+          <label class="field">
+            Mensagem (pode editar antes de enviar)
+            <textarea id="formMessage" name="Resumo" rows="8"></textarea>
+          </label>
+
+          <div class="controls-row">
+            <button id="sendMailBtn" class="btn primary" type="submit">Enviar ao professor</button>
+            <button id="closeSummary" class="btn ghost" type="button">Fechar (voltar ao jogo)</button>
+          </div>
+          <small class="muted">O e-mail será enviado para <strong>gabrieli.rizzi.cruz@escola.pr.gov.br</strong> via seu cliente de e-mail (mailto:).</small>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Controles: ← → = mover | ↑ / W / Espaço = pular | P = pausar</div>
+      <small>Design inspirado no seu projeto de referência.</small>
     </footer>
-  </main>
+  </div>
 
   <script src="game.js"></script>
 </body>
