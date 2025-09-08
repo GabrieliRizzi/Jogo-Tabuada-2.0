@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jogo da Tabuada Divertido</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🐰 Jogo da Tabuada</h1>
+      <p>Resolva as contas para ajudar o bichinho a pular os obstáculos!</p>
+    </header>
+
+    <section class="form-area">
+      <label>
+        Seu e-mail:
+        <input id="student-email" type="email" placeholder="aluno@escola.com" required>
+      </label>
+      <button id="start-btn">Começar o Jogo</button>
+    </section>
+
+    <section id="game-area" class="hidden">
+      <div class="hud">
+        <div>Aluno: <span id="hud-student">—</span></div>
+        <div>Nível: <span id="hud-level">1</span></div>
+        <div>Acertos: <span id="hud-correct">0</span>/30</div>
+      </div>
+
+      <canvas id="game-canvas" width="600" height="200"></canvas>
+
+      <div class="question-box">
+        <div id="question">Quanto é 2 × 3?</div>
+        <input id="answer-input" type="number" placeholder="Resposta">
+        <button id="submit-answer">Enviar</button>
+        <div id="feedback" class="feedback"></div>
+      </div>
+    </section>
+
+    <!-- Resumo enviado por e-mail -->
+    <section id="summary-area" class="hidden">
+      <h2>Resumo do Nível</h2>
+      <pre id="summary-text"></pre>
+      <form id="report-form" method="post"
+        action="mailto:gabrieli.rizzi.cruz@escola.pr.gov.br"
+        enctype="text/plain">
+        <label>
+          Seu e-mail:
+          <input name="Aluno" id="form-student" type="email" required>
+        </label>
+        <textarea name="Resumo" id="form-summary"></textarea>
+        <button type="submit">Enviar para o professor</button>
+      </form>
+    </section>
+
+    <footer>
+      <small>Todos os relatórios são enviados automaticamente ao professor após cada nível.</small>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
