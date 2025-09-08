@@ -1,0 +1,147 @@
+body{
+  margin:0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(180deg, #fceabb, #f8b500);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.container{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  max-width:720px;
+  width:100%;
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+
+header h1{
+  margin:0;
+  color:#ff6b6b;
+  text-align:center;
+  font-size:32px;
+}
+
+header p{
+  text-align:center;
+  color:#444;
+  margin:6px 0 16px;
+}
+
+.form-area{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+}
+
+.form-area input{
+  padding:10px;
+  border:2px solid #ccc;
+  border-radius:8px;
+}
+
+.form-area button{
+  background:#6fcf97;
+  border:none;
+  padding:12px 20px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  color:white;
+  cursor:pointer;
+}
+
+.hidden{ display:none }
+
+.hud{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-weight:bold;
+  color:#555;
+}
+
+#game-canvas{
+  border:2px solid #333;
+  background:linear-gradient(#a8e6cf,#dcedc1);
+  border-radius:12px;
+}
+
+.question-box{
+  margin-top:12px;
+  background:#fef3bd;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+}
+
+#question{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+#answer-input{
+  padding:10px;
+  border:2px solid #ccc;
+  border-radius:8px;
+  width:120px;
+  font-size:16px;
+}
+
+#submit-answer{
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  background:#ff6b6b;
+  color:white;
+  font-weight:bold;
+  margin-left:8px;
+  cursor:pointer;
+}
+
+.feedback{ margin-top:6px; font-weight:bold; }
+
+#summary-area{
+  margin-top:20px;
+  background:#e0f7fa;
+  padding:16px;
+  border-radius:12px;
+}
+
+#summary-text{
+  background:#fff;
+  border:1px solid #ccc;
+  padding:10px;
+  border-radius:8px;
+  max-height:200px;
+  overflow:auto;
+}
+
+#report-form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:12px;
+}
+
+#report-form input, #report-form textarea{
+  padding:10px;
+  border:2px solid #ccc;
+  border-radius:8px;
+}
+
+#report-form textarea{ min-height:120px; }
+
+#report-form button{
+  background:#2196f3;
+  color:white;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
